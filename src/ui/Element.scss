@@ -1,0 +1,165 @@
+.news-snippet {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+
+  .snippet-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #666;
+
+    .date {
+      font-weight: bold;
+    }
+
+    .reach {
+      color: #333;
+    }
+  }
+
+  .news-title {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  .news-source {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #666;
+
+    .domain {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .authors {
+      color: #888;
+    }
+  }
+
+  .highlights {
+    margin-bottom: 20px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+
+    .highlight {
+      margin: 0 0 10px 0;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #444;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        font-weight: bold;
+        color: #333;
+      }
+    }
+
+    .show-more {
+      background: none;
+      border: none;
+      color: #1a73e8;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 10px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .keywords-section {
+    margin-bottom: 20px;
+
+    .keywords-title {
+      font-size: 16px;
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+
+    .keywords-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      .keyword-item {
+        display: flex;
+        align-items: center;
+        background-color: #f5f5f5;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+
+        .keyword {
+          margin-right: 5px;
+          font-weight: bold;
+        }
+
+        .count {
+          color: #666;
+        }
+      }
+
+      .show-all {
+        background: none;
+        border: none;
+        color: #1a73e8;
+        font-size: 14px;
+        cursor: pointer;
+        padding: 5px 10px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .traffic-section {
+    .traffic-title {
+      font-size: 16px;
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+
+    .traffic-list {
+      .traffic-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        font-size: 14px;
+        border-bottom: 1px solid #eee;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .country {
+          color: #444;
+        }
+
+        .percentage {
+          color: #666;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

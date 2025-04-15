@@ -1,4 +1,5 @@
 import { IData_SnippetNews } from "./interfaces/interfaces";
+import Element from "./ui/Element";
 
 function App() {
   const data: IData_SnippetNews = {
@@ -10,7 +11,7 @@ function App() {
     DOM: "globalsecuritymag.com",
     SENT: "negative",
     LANG: "en",
-    AU: [],
+    AU: ["Kaspersky"],
     FAV: "/favicons/e65d69dc71ab539384fcc63062efdd3d.png",
     KW: [
       {
@@ -49,7 +50,7 @@ function App() {
 
   return (
     <div>
-      <div>{data.ID}</div>
+      <Element data={data} />
     </div>
   );
 }
