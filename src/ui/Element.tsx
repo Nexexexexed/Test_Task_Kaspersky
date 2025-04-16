@@ -1,5 +1,9 @@
 import { IData_SnippetNews } from "../interfaces/interfaces";
 import "./Element.scss";
+import image_info from "/favicons/info.svg";
+import image_square from "/favicons/square.svg";
+import image_lang from "/favicons/book_lang.svg";
+import image_author from "/favicons/author.svg";
 
 const Element: React.FC<{ data: IData_SnippetNews }> = ({ data }) => {
   const formatDate = (dateString: string) => {
@@ -19,75 +23,96 @@ const Element: React.FC<{ data: IData_SnippetNews }> = ({ data }) => {
       return num.toString();
     }
   };
+
   const topKeywords = [...data.KW]
     .sort((a, b) => b.count - a.count)
     .slice(0, 3);
 
-  const countryCode = data.CNTR_CODE?.toLowerCase(); // fr, us и т.д.
+  const countryCode = data.CNTR_CODE?.toLowerCase();
   const flagUrl = `https://flagcdn.com/24x18/${countryCode}.png`;
 
   return (
     <div className="news-snippet">
       <div className="snippet-header">
-        <span className="date">{formatDate(data.DP)}</span>
-        <span className="reach">{formatNumber(data.REACH)} Reach</span>
-        <div className="traffic-section">
-          <h3 className="traffic-title">Top Traffic</h3>
-          <div className="traffic-list">
-            {data.TRAFFIC.slice(0, 3).map((country, index) => (
-              <div key={index} className="traffic-item">
-                <span className="country">{country.value}</span>
-                <span className="percentage">
-                  {(country.count * 100).toFixed(1)}%
-                </span>
-              </div>
-            ))}
-          </div>
+        <div className="left-header">
+          <strong className="date">{formatDate(data.DP)}</strong>
+          <p>
+            <strong className="reach">{formatNumber(data.REACH)} </strong>Reach
+          </p>
+
+          <span className="traffic-title">Top Traffic: </span>
+          {data.TRAFFIC.slice(0, 3).map((country, index) => (
+            <p>
+              {country.value}:
+              <strong key={index} className="traffic-item">
+                {(country.count * 100).toFixed(0)}%{index < 2 ? " " : ""}
+              </strong>
+            </p>
+          ))}
+        </div>
+        <div className="right-header">
+          <span className={`sent ${data.SENT}`}>
+            {data.SENT[0].toUpperCase() + data.SENT.slice(1)}
+          </span>
+          <img className="image_header" src={image_info} alt="Info" />
+          <img className="image_header scale" src={image_square} alt="Expand" />
         </div>
       </div>
 
       <h2 className="news-title">{data.TI}</h2>
 
       <div className="news-source">
-        <span className="domain">{data.DOM}</span>
+        <div className="domain_block">
+          <img className="fav_ico" src={data.FAV}></img>
+          <a href={data.DOM} className="domain">
+            {data.DOM.slice(12)}
+          </a>
+        </div>
 
         <div className="country">
-          <div>
-            <img src={flagUrl} />
-          </div>
+          <img src={flagUrl} alt={data.CNTR} />
           <span>{data.CNTR}</span>
         </div>
-        <div>{data.LANG.toUpperCase()}</div>
-        {data.AU.length > 0 && (
-          <span className="authors">{data.AU.join(", ")}</span>
-        )}
+        <div className="language_block">
+          <img className="language_image" src={image_lang}></img>
+          <span className="language">{data.LANG.toUpperCase()}</span>
+        </div>
+        <div className="authors_block">
+          <img src={image_author} className="author_image"></img>
+          {data.AU.length > 0 && (
+            <span className="authors">{data.AU.join(", ")} et al.</span> //доработать чтобы et al добавлялось если больше 3 человек и  писалось 3
+          )}
+        </div>
       </div>
 
       <div className="highlights">
-        {data.HIGHLIGHTS.slice(0, 2).map((highlight, index) => (
-          <p
-            key={index}
-            className="highlight"
-            dangerouslySetInnerHTML={{
-              __html: highlight
-                .replace(/<kw>/g, "<strong>")
-                .replace(/<\/kw>/g, "</strong>"),
-            }}
-          />
-        ))}
-        <button className="show-more">Show more</button>
+        {data.HIGHLIGHTS.slice(0, data.HIGHLIGHTS.length).map(
+          (highlight, index) => (
+            <p
+              key={index}
+              className="highlight"
+              dangerouslySetInnerHTML={{
+                __html: highlight
+                  .replace(/<kw>/g, "<strong>")
+                  .replace(/<\/kw>/g, "</strong>"),
+              }}
+            />
+          )
+        )}
+        <a href={data.URL} className="show-more">
+          Show more
+        </a>
       </div>
 
       <div className="keywords-section">
-        <h3 className="keywords-title">Keywords</h3>
         <div className="keywords-list">
           {topKeywords.map((kw, index) => (
             <div key={index} className="keyword-item">
-              <span className="keyword">{kw.value}</span>
-              <span className="count">{kw.count}</span>
+              <strong className="keyword">{kw.value}</strong>
+              <strong className="count">{kw.count}</strong>
             </div>
           ))}
-          <button className="show-all">Show All</button>
+          <button className="show-all">Show All +{data.KW.length - 3}</button>
         </div>
       </div>
     </div>

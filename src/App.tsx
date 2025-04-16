@@ -1,5 +1,6 @@
 import { IData_SnippetNews } from "./interfaces/interfaces";
 import Element from "./ui/Element";
+import "./App.scss";
 
 function App() {
   const data: IData_SnippetNews = {
@@ -8,11 +9,11 @@ function App() {
     AB: "Mobile bankers left vulnerable: 47% of UK consumers manage finances on insecure smartphones\nAugust 2020 by Kaspersky\nNew research has revealed that UK consumers carry out online banking on smartphones and devices that are potentially vulnerable to a security breach, despite making sure they keep their desktop or laptop computers safe. In a study commissioned by Kaspersky, nearly half (47%) of smartphone owners who use a banking app don’t protect their mobile device with antivirus or security sof...",
     URL: "https://www.globalsecuritymag.com/Mobile-bankers-left- vulnerable-47,20200819,101944.html",
     DP: "2025-03-06T21:00:00",
-    DOM: "globalsecuritymag.com",
-    SENT: "negative",
+    DOM: "https://www.globalsecuritymag.com",
+    SENT: "positive",
     LANG: "en",
-    AU: ["Kaspersky"],
-    FAV: "/favicons/e65d69dc71ab539384fcc63062efdd3d.png",
+    AU: ["Kaspersky E.", "Artemiy B."],
+    FAV: "/favicons/free-icon-planet-earth-2046410.png",
     KW: [
       {
         value: "antivirus",
@@ -24,7 +25,11 @@ function App() {
       },
       {
         value: "new",
-        count: 1,
+        count: 6,
+      },
+      {
+        value: "svaga",
+        count: 2,
       },
     ],
     HIGHLIGHTS: [
@@ -49,7 +54,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="main">
       <Element data={data} />
     </div>
   );
