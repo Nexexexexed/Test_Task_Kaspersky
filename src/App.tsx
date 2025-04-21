@@ -28,7 +28,7 @@ function App() {
         count: 6,
       },
       {
-        value: "svaga",
+        value: "saga",
         count: 2,
       },
     ],
