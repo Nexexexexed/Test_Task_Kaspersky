@@ -12,7 +12,7 @@ function App() {
     DOM: "https://www.globalsecuritymag.com",
     SENT: "positive",
     LANG: "en",
-    AU: ["Kaspersky E.", "Artemiy B."],
+    AU: ["Kaspersky E.", "Artemiy B.", "Karpov A.", "Dolgovatov G."],
     FAV: "/favicons/free-icon-planet-earth-2046410.png",
     KW: [
       {
@@ -51,6 +51,7 @@ function App() {
         count: 0.036,
       },
     ],
+    DUPL: 125, //добавил такой элемент, так как посчитал что для соответствия с версткой необходимо знать сколько дубликатов содержит новость
   };
 
   return (

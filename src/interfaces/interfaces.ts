@@ -15,6 +15,7 @@ export interface IData_SnippetNews {
   TRAFFIC: IData_TrafficItem[];
   FAV: string;
   HIGHLIGHTS: string[];
+  DUPL: number;
 }
 
 export interface IData_TagItem {

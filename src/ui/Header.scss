@@ -1,0 +1,48 @@
+.snippet-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 13px;
+
+  .left-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .right-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .date,
+  .reach,
+  .traffic-item {
+    font-weight: bold;
+    color: white;
+  }
+
+  .image_header {
+    filter: invert(100%);
+    width: 16px;
+    height: 16px;
+    transform: scale(1.25);
+  }
+
+  .sent {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+    color: black;
+
+    &.positive {
+      background-color: #46ffb5;
+    }
+
+    &.negative {
+      background-color: #f34025;
+    }
+  }
+}
