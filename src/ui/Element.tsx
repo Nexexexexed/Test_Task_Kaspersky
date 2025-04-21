@@ -81,9 +81,9 @@ const Element: React.FC<{ data: IData_SnippetNews }> = ({ data }) => {
         </div>
       </div>
       <div className="main_news">
-        <Header data={data} />
+        <Header data={data} format={true} />
         <h2 className="news-title">{data.TI}</h2>
-        <Source data={data} />
+        <Source data={data} format={true} />
       </div>
       <button className="button_view">
         <img className="image_chevrone" src={image_chevrone} /> View Duplicates

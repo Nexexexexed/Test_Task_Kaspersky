@@ -5,7 +5,12 @@ import "./Source.scss";
 import image_lang from "/favicons/book_lang.svg";
 import image_author from "/favicons/author.svg";
 
-const Source: React.FC<{ data: IData_SnippetNews }> = ({ data }) => {
+interface SourceProps {
+  data: IData_SnippetNews;
+  format?: boolean;
+}
+
+const Source: React.FC<SourceProps> = ({ data, format = false }) => {
   const countryCode = data.CNTR_CODE?.toLowerCase();
   const flagUrl = `https://flagcdn.com/24x18/${countryCode}.png`;
 
@@ -28,10 +33,13 @@ const Source: React.FC<{ data: IData_SnippetNews }> = ({ data }) => {
         <img src={flagUrl} alt={data.CNTR} />
         <span>{data.CNTR}</span>
       </div>
-      <div className="language_block">
-        <img className="language_image" src={image_lang} alt="Language"></img>
-        <span className="language">{data.LANG.toUpperCase()}</span>
-      </div>
+      {!format && (
+        <div className="language_block">
+          <img className="language_image" src={image_lang} alt="Language"></img>
+          <span className="language">{data.LANG.toUpperCase()}</span>
+        </div>
+      )}
+
       <div className="authors_block">
         <img src={image_author} className="author_image" alt="Author"></img>
         {data.AU.length > 0 && (
