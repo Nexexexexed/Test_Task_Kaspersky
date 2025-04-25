@@ -13,7 +13,7 @@ function App() {
     SENT: "positive",
     LANG: "en",
     AU: ["Kaspersky E.", "Artemiy B.", "Karpov A.", "Dolgovatov G."],
-    FAV: "/favicons/free-icon-planet-earth-2046410.png",
+    FAV: "/planet.png",
     KW: [
       {
         value: "antivirus",

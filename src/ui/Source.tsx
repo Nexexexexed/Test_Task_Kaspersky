@@ -14,16 +14,32 @@ const Source: React.FC<SourceProps> = ({ data, format = false }) => {
   const countryCode = data.CNTR_CODE?.toLowerCase();
   const flagUrl = `https://flagcdn.com/24x18/${countryCode}.png`;
 
+  const getImageUrl = (absolutePath: string) => {
+    return `${import.meta.env.BASE_URL}${
+      absolutePath.startsWith("/") ? absolutePath.slice(1) : absolutePath
+    }`;
+  };
+
   const formatAuthors = (authors: string[]) => {
     if (authors.length <= 3) {
       return authors.join(", ");
     }
     return `${authors.slice(0, 3).join(", ")} et al.`;
   };
+
   return (
     <div className="news-source">
       <div className="domain_block">
-        <img className="fav_ico" src={data.FAV} alt="Favicon"></img>
+        <img
+          className="fav_ico"
+          src={getImageUrl(data.FAV)}
+          alt="Favicon"
+          onError={(e) => {
+            e.currentTarget.src = `${
+              import.meta.env.BASE_URL
+            }favicons/default.png`;
+          }}
+        ></img>
         <a href={data.DOM} className="domain">
           {data.DOM.slice(12)}
         </a>
